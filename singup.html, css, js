@@ -1,1 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SingUp</title>
+    <link rel="stylesheet" href="signup.css">
+    <script type="text/javascript" src="validation.js" defer>
+    </script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <form id="from'">
+
+            <h1> SingUp</h1>
+
+            <div>
+
+                <label for="username"></label>
+                <img src="person_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24 (1).svg" alt="User Icon" width="24" height="24">
+
+                <input type="text" id="firstname-input" name="username" placeholder="Enter your username" required>
+
+            </div>
+
+            <div>
+                <label for="email">   </label>
+                <img src="mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Email Icon" width="24" height="24">
+
+
+                <input type="email" id="email-input" name="email" placeholder="Enter your email" required>
+
+            </div>
+
+            <div>
+                <label for="password"></label>
+                <img src="lock_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Lock Icon" width="24" height="24">
+
+                <input type="password" id="password-input" name="password" placeholder="Enter your password" required>
+
+            </div>
+
+            <div>
+                <label for="confirm-password"></label>
+                <img src="lock_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Lock Icon" width="24" height="24">
+
+                <input type="password" id="confirm-password-input" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+
+            <div>
+                <button type="submit" id="submit-btn">Sign Up</button>
+            </div>
+
+            <p> Already have an account? <a href="login.html">Login</a></p>
+
+        </form>
+
+
+</body>
+
+</html>
+
+              :root {
+                 --base-clr: #11121a;
+                 --line-clr: #42434a;
+                 --hover-clr: #222533;
+                 --text-clr: #e6e6ef;
+                 --accent-clr: #5e63ff;
+                 --secondary-text-clr: #b0b3c1;
+             }
+             
+             * {
+                 margin: 0;
+                 padding: 0;
+                 box-sizing: border-box;
+             }
+             
+             html {
+                 font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                 font-size: 12pt;
+                 color: var(--text-clr);
+                 text-align: center;
+             }
+             
+             body {
+                 min-height: 100vh;
+                 background-image: url(pexels-alscre-2847648.jpg);
+                 background-size: cover;
+                 background-position: right;
+                 overflow: hidden;
+             }
+             
+             .wrapper {
+                 background-color: var( --line-clr);
+                 height: 100vh;
+                 width: max(40%, 600px);
+                 border-radius: 0 20px 25px 0;
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: center;
+                 align-items: center
+             }
+             
+             .sub-menu {
+                 color: var(--base-clr);
+                 font-size: 1.2rem;
+             }
+             
+             h1 {
+                 font-size: 3rem;
+                 font-weight: 900;
+                 text-transform: uppercase;
+                 text-align: center;
+                 padding-left: 30px;
+             }
+             
+             form {
+                 width: min(400px, 100%);
+                 margin-top: 20px;
+                 margin-bottom: 50px;
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center;
+                 gap: 10px;
+             }
+             
+             form>div {
+                 width: 100;
+                 display: flex;
+                 justify-content: center
+             }
+             
+             form label {
+                 flex-shrink: 0;
+                 height: 50px;
+                 width: 50px;
+                 background-color: var(--accent-clr);
+                 fill: var(--base-clr);
+                 color: var(--base-clr);
+                 border-radius: 10px 0 0 10px;
+                 justify-content: center;
+                 align-items: center;
+             }
+             
+             form>div>img {
+                 width: 30px;
+                 height: 30px;
+                 top: 0;
+                 justify-content: center;
+                 align-items: center;
+                 margin-top: 5px;
+             }
+             
+             form input {
+                 box-sizing: border-box;
+                 flex-grow: 1;
+                 min-width: 0;
+                 height: 50px;
+                 padding: 1em;
+             }
+             
+             form input:hover {
+                 border-color: var(--accent-clr);
+             }
+             
+             form input:focus {
+                 outline: none;
+                 border-color: var(--text-clr);
+             }
+             
+             div:has(input:focus)>label {
+                 background-color: var(--text-clr);
+                 color: var(--base-clr);
+             }
+             
+             form input::placeholder {
+                 color: var(--base-clr);
+                 opacity: 1;
+             }
+             
+             form button {
+                 margin-top: 10px;
+                 border: none;
+                 border-radius: 1000px;
+                 padding: .85em 4em;
+                 background-color: var(--accent-clr);
+                 color: var(--base-clr);
+                 font: inherit;
+                 text-transform: uppercase;
+                 cursor: pointer;
+             }
+             
+             form button:hover {
+                 background-color: var(--text-clr);
+                 color: var(--base-clr);
+             }
+             
+             form button:focus {
+                 outline: none;
+                 background-color: var(--base-clr);
+             }
+             
+             a {
+                 text-decoration: none;
+                 color: var(--accent-clr);
+             }
+             
+             a:hover {
+                 color: var(--text-clr);
+             }
+             
+             @media(max-width: 600px) {
+                 .wrapper {
+                     width: min(600px, 100%);
+                     border-radius: 0;
+                 }
+                }
+
+                .incorrect{
+                    background-color: red;
+
+                }
+
+                .incorrect input{
+                    border-color: red;
+                }
+
+const form = document.getElementById('form');
+const firstName = document.getElementById('firstname-input');
+const email = document.getElementById('email-input');
+const password = document.getElementById('password-input');
+const confirmPassword = document.getElementById('confirm-password-input');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent form submission
+
+    let errors = [];
+
+    // Check if it's signup form (assuming confirmPassword field is visible)
+    if (confirmPassword) {
+        errors = getSignupFormErrors(
+            firstName.value.trim(),
+            email.value.trim(),
+            password.value,
+            confirmPassword.value
+        );
+    } else {
+        errors = getLoginFormErrors();
+    }
+
+    if (errors.length > 0) {
+        console.log("Errors:", errors);
+        // You can display errors on the page instead
+    } else {
+        console.log("Form is valid. Submit!");
+        // form.submit(); // Uncomment this if you're ready to submit
+    }
+});
+
+function getSignupFormErrors(firstName, email, password, repeatPassword) {
+    let errors = [];
+
+    if (!firstName) errors.push("First name is required.");
+    if (!email.includes('@')) errors.push("Email is invalid.");
+    if (password.length < 6) errors.push("Password must be at least 6 characters.");
+    if (password !== confirmPassword) errors.push("Passwords do not match.");
+    if (password !== repeatPassword) errors.push("Confirm password is required.");
+
+    return errors;
+}
+
+function getLoginFormErrors() {
+    let errors = [];
+
+    if (!email.value.trim()) errors.push("Email is required.");
+    if (!password.value) errors.push("Password is required.");
+
+    return errors;
+}
+            
