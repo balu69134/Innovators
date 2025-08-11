@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Allurest — Demo MVP (Responsive)</title>
+    <style>
+         :root {
+            --bg: #0f1720;
+            --card: #0b1220;
+            --muted: #94a3b8;
+            --accent: #ff7a59;
+            --white: #ffffff;
+            --radius: 12px;
+            --glass: rgba(255, 255, 255, 0.04);
+        }
+        
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            font-family: Inter, system-ui, Arial, Helvetica, sans-serif;
+            margin: 0;
+            background: linear-gradient(180deg, #071026 0%, #0f1720 100%);
+            color: var(--white);
+            -webkit-font-smoothing: antialiased
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            background: transparent;
+            position: sticky;
+            top: 0;
+            z-index: 20
+        }
+        
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+        
+        .logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #ff7a59, #ffd58b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #111
+        }
+        
+        .site-title {
+            font-weight: 700;
+            font-size: 18px
+        }
+        
+        nav {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+        
+        a.btn,
+        button.btn {
+            background: var(--accent);
+            color: #111;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer
+        }
+        
+        a.ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--muted);
+            text-decoration: none
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px
+        }
+        /* HERO */
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            padding: 40px 0
+        }
+        
+        .hero-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 26px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px
+        }
+        
+        .hero h1 {
+            margin: 0;
+            font-size: 28px
+        }
+        
+        .hero p {
+            margin: 0;
+            color: var(--muted)
+        }
+        /* Grid */
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 16px;
+            margin-top: 18px
+        }
+        
+        .activity-card {
+            background: var(--card);
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start
+        }
+        
+        .activity-image {
+            width: 110px;
+            height: 80px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0
+        }
+        
+        .activity-meta {
+            flex: 1
+        }
+        
+        .activity-meta h3 {
+            margin: 0;
+            font-size: 16px
+        }
+        
+        .activity-meta p {
+            margin: 6px 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+        
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px
+        }
+        
+        .add-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px 10px;
+            border-radius: 8px;
+            color: var(--white);
+            cursor: pointer;
+            font-weight: 600
+        }
+        /* sticky top bar for cart */
+        
+        .top-cart {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            background: linear-gradient(180deg, #111827, #0b1220);
+            padding: 10px 12px;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 30
+        }
+        
+        .cart-count {
+            background: var(--accent);
+            padding: 6px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #111
+        }
+        /* itinerary page */
+        
+        .panel {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 18px;
+            border-radius: 12px
+        }
+        
+        .itinerary-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+        
+        .itinerary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass);
+            padding: 10px;
+            border-radius: 10px
+        }
+        
+        .muted {
+            color: var(--muted)
+        }
+        
+        .wallet {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+        /* Rewards popup */
+        
+        .rewards-popup {
+            position: fixed;
+            left: 50%;
+            top: 20%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #111827, #0b1220);
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            display: none;
+            z-index: 60
+        }
+        /* footer */
+        
+        footer {
+            padding: 28px;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 36px
+        }
+        /* responsive */
+        
+        @media(min-width:700px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+            .hero {
+                grid-template-columns: 1fr 420px;
+                align-items: center
+            }
+        }
+        
+        @media(min-width:980px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+        /* simple modal */
+        
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(2, 6, 23, 0.6);
+            z-index: 80
+        }
+        
+        .modal .modal-card {
+            background: #071126;
+            padding: 18px;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 92%
+        }
+        
+        .close-x {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            font-weight: 700;
+            cursor: pointer
+        }
+        /* simple link look */
+        
+        .link-like {
+            background: transparent;
+            border: 0;
+            color: var(--accent);
+            cursor: pointer;
+            font-weight: 700
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="brand container" style="max-width:none">
+            <div class="logo">A</div>
+            <div>
+                <div class="site-title">Allurest</div>
+                <div class="muted" style="font-size:12px">Discover local adventures</div>
+            </div>
+        </div>
+        <nav class="container" style="max-width:none;justify-content:flex-end">
+            <a class="ghost" href="#explore">Explore</a>
+            <a class="ghost" href="#itinerary">Itinerary</a>
+            <a class="ghost" href="#about">About</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="hero-card">
+                <h1>Discover local experiences. Build your perfect day.</h1>
+                <p class="muted">Browse curated activities, add them to your itinerary and pay inside the app to earn instant credits and perks.</p>
+                <div style="display:flex;gap:12px">
+                    <a class="btn" href="#explore">Explore Activities</a>
+                    <button class="ghost" onclick="location.hash='#itinerary'">View Itinerary</button>
+                </div>
+
+                <div style="margin-top:8px;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center">
+                    <div>
+                        <div style="font-weight:700">Demo Wallet</div>
+                        <div class="muted" id="wallet-balance">0 credits</div>
+                    </div>
+                    <div class="wallet">
+                        <button class="ghost" onclick="applyDemoCredits(100)">Add ₹100 Demo Credits</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+                <div class="panel">
+                    <div style="font-weight:700">Why Allurest?</div>
+                    <div class="muted" style="font-size:14px;margin-top:8px">Pay in the app to unlock instant rewards, exclusive bundles and gamified perks. Perfect for exploring your city.</div>
+                </div>
+
+                <div class="panel">
+                    <div style="font-weight:700">Quick tips</div>
+                    <ul class="muted" style="margin:8px 0 0 18px">
+                        <li>Tap <strong>Book Now</strong> to add activities</li>
+                        <li>Use Demo Credits at checkout</li>
+                        <li>After payment try the Spin-the-Wheel (demo)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPLORE -->
+        <section id="explore">
+            <h2 style="margin:6px 0 12px">Explore Activities</h2>
+            <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+                <input id="search" placeholder="Search activities or location" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white)" />
+                <select id="filter-category" style="padding:10px;border-radius:10px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.04)">
+        <option value="">All categories</option>
+        <option>Outdoor</option><option>Food</option><option>Culture</option>
+      </select>
+                <button class="ghost" onclick="resetFilters()">Reset</button>
+            </div>
+
+            <div class="grid" id="activities-grid">
+                <!-- JS will populate cards here -->
+            </div>
+        </section>
+
+        <!-- ITINERARY -->
+        <section id="itinerary" style="margin-top:28px">
+            <h2 style="margin:6px 0 12px">Your Itinerary</h2>
+            <div style="display:grid;grid-template-columns:1fr;gap:12px">
+                <div class="panel">
+                    <div class="muted">Selected activities</div>
+                    <div class="itinerary-list" id="itinerary-list"></div>
+                </div>
+
+                <div class="panel">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div>
+                            <div style="font-weight:700" id="summary-count">0 items</div>
+                            <div class="muted" id="summary-price">Total: ₹0</div>
+                        </div>
+                        <div>
+                            <div class="muted">Wallet</div>
+                            <div id="wallet-display" style="font-weight:700">0 credits</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px;display:flex;gap:8px">
+                        <button class="btn" onclick="mockPay()">Pay in App (Demo)</button>
+                        <button class="ghost" onclick="clearItinerary()">Clear</button>
+                    </div>
+                    <div style="margin-top:12px;color:var(--muted);font-size:13px">
+                        This demo simulates payment. To integrate real payments, we’ll connect Stripe / Razorpay (server-side) and confirm transactions before awarding credits.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" style="margin-top:28px">
+            <h2>About</h2>
+            <div class="panel">
+                <p class="muted">Allurest helps you discover local activities and build custom itineraries. This demo showcases the in-app booking & rewards loop. For MVP we recommend Web/React + Node backend + Stripe/Razorpay integration and Airtable for admin storage.</p>
+            </div>
+        </section>
+
+        <footer>
+            © Allurest — Demo. Built for the MVP. Use this scaffold to test payment & rewards UX.
+        </footer>
+
+    </main>
+
+    <!-- Floating cart -->
+    <div class="top-cart" id="top-cart">
+        <div>Itinerary</div>
+        <div class="cart-count" id="cart-count">0</div>
+        <button class="ghost" onclick="location.hash='#itinerary'">Open</button>
+    </div>
+
+    <!-- Rewards Popup -->
+    <div class="rewards-popup" id="rewards-popup">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <div>
+                <div style="font-weight:800;font-size:16px">🎉 Payment Successful</div>
+                <div class="muted" id="rewards-text">You earned 0 credits</div>
+            </div>
+            <div>
+                <button class="btn" onclick="closeRewards()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activity Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div id="modal-title" style="font-weight:800">Title</div>
+                <button class="close-x" onclick="closeModal()">✕</button>
+            </div>
+            <div style="margin-top:12px" id="modal-body"></div>
+            <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+                <button class="ghost" onclick="closeModal()">Close</button>
+                <button class="btn" id="modal-add-btn">Add to Itinerary</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* -------------------------
+                   Demo data (replace with CMS or API)
+                   ------------------------- */
+        const ACTIVITIES = [{
+            id: 'kayak-goa',
+            title: 'Kayaking in Goa',
+            price: 1200,
+            category: 'Outdoor',
+            location: 'Goa',
+            image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60',
+            short: '2-hr coastal kayak tour'
+        }, {
+            id: 'food-walk-hyd',
+            title: 'Hyderabad Food Walk',
+            price: 800,
+            category: 'Food',
+            location: 'Hyderabad',
+            image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=60',
+            short: 'Taste the best local street food'
+        }, {
+            id: 'heritage-tour',
+            title: 'City Heritage Tour',
+            price: 600,
+            category: 'Culture',
+            location: 'Delhi',
+            image: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=60',
+            short: 'Guided walk through historic sites'
+        }, {
+            id: 'sunset-cruise',
+            title: 'Sunset Cruise',
+            price: 1500,
+            category: 'Outdoor',
+            location: 'Mumbai',
+            image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60',
+            short: 'Evening cruise with snacks'
+        }, {
+            id: 'pottery-workshop',
+            title: 'Pottery Workshop',
+            price: 400,
+            category: 'Culture',
+            location: 'Pune',
+            image: 'https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=800&q=60',
+            short: 'Hands-on pottery for beginners'
+        }, {
+            id: 'street-food-beng',
+            title: 'Bengaluru Street Food Tour',
+            price: 900,
+            category: 'Food',
+            location: 'Bengaluru',
+            image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=60',
+            short: 'Local favorites and hidden gems'
+        }];
+
+        /* -------------------------
+           Cart & Wallet (localStorage)
+           ------------------------- */
+        const STORAGE_CART = 'allurest_demo_cart_v1';
+        const STORAGE_WALLET = '';
+
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_CART)) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(STORAGE_CART, JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function getWallet() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_WALLET)) || {
+                    credits: 0
+                };
+            } catch (e) {
+                return {
+                    credits: 0
+                };
+            }
+        }
+
+        function saveWallet(w) {
+            localStorage.setItem(STORAGE_WALLET, JSON.stringify(w));
+            updateWalletUI();
+        }
+
+        function updateWalletUI() {
+            const w = getWallet();
+            document.getElementById('wallet-balance').textContent = w.credits + ' credits';
+            document.getElementById('wallet-display').textContent = w.credits + ' credits';
+        }
+
+        function updateCartUI() {
+            const c = getCart();
+            document.getElementById('cart-count').textContent = c.length;
+            document.getElementById('summary-count').textContent = c.length + ' items';
+            const total = c.reduce((s, it) => s + it.price, 0);
+            document.getElementById('summary-price').textContent = 'Total: ₹' + total;
+            // itinerary list
+            const listEl = document.getElementById('itinerary-list');
+            listEl.innerHTML = '';
+            if (c.length === 0) {
+                listEl.innerHTML = '<div class="muted">No activities selected yet. Go to Explore and add activities.</div>';
+                return;
+            }
+            c.forEach((it, idx) => {
+                const el = document.createElement('div');
+                el.className = 'itinerary-item';
+                el.innerHTML = `<div>
+      <div style="font-weight:700">${it.title}</div>
+      <div class="muted" style="font-size:13px">${it.category} · ${it.location}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div style="font-weight:700">₹${it.price}</div>
+        <div style="display:flex;gap:8px"><button class="ghost" onclick="removeFromCart(${idx})">Remove</button></div>
+      </div>`;
+                listEl.appendChild(el);
+            });
+        }
+
+        /* -------------------------
+           Render Activities grid
+           ------------------------- */
+        function renderActivities(filterText = '', category = '') {
+            const grid = document.getElementById('activities-grid');
+            grid.innerHTML = '';
+            const q = filterText.toLowerCase();
+            ACTIVITIES.filter(a => {
+                const matchText = (!q) || a.title.toLowerCase().includes(q) || a.location.toLowerCase().includes(q) || a.short.toLowerCase().includes(q);
+                const matchCat = (!category) || a.category === category;
+                return matchText && matchCat;
+            }).forEach(a => {
+                const card = document.createElement('div');
+                card.className = 'activity-card';
+                card.dataset.activityId = a.id;
+                card.innerHTML = `
+      <div class="activity-image" style="background-image:url('${a.image}')"></div>
+      <div class="activity-meta">
+        <h3 class="activity-title">${a.title}</h3>
+        <p class="muted">${a.short}</p>
+        <div class="meta-row">
+          <div class="muted">${a.category} · ${a.location}</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div style="font-weight:700">₹${a.price}</div>
+            <button class="add-btn" onclick="openDetail('${a.id}')">Book Now</button>
+          </div>
+        </div>
+      </div>`;
+                grid.appendChild(card);
+            });
+        }
+
+        /* -------------------------
+           Add / Remove / Itinerary
+           ------------------------- */
+        function addToCartById(id) {
+            const a = ACTIVITIES.find(x => x.id === id);
+            if (!a) return;
+            const cart = getCart();
+            if (!cart.find(i => i.id === a.id)) cart.push(a);
+            saveCart(cart);
+        }
+
+        function removeFromCart(idx) {
+            const cart = getCart();
+            cart.splice(idx, 1);
+            saveCart(cart);
+        }
+
+        function clearItinerary() {
+            if (confirm('Clear your itinerary?')) {
+                saveCart([]);
+            }
+        }
+
+        /* -------------------------
+           Modal & Detail
+           ------------------------- */
+        function openDetail(id) {
+            const a = ACTIVITIES.find(x => x.id === id);
+            if (!a) return;
+            document.getElementById('modal-title').textContent = a.title;
+            document.getElementById('modal-body').innerHTML = `<div style="display:flex;gap:12px;align-items:center">
+    <div style="min-width:160px;height:100px;background-image:url('${a.image}');background-size:cover;border-radius:8px"></div>
+    <div>
+      <div style="font-weight:700">₹${a.price}</div>
+      <div class="muted" style="margin-top:8px">${a.short}</div>
+      <div style="margin-top:6px" class="muted">Category: ${a.category} · ${a.location}</div>
+    </div>
+  </div>
+  <div style="margin-top:12px">${a.description || 'No further description provided.'}</div>`;
+            document.getElementById('modal-add-btn').onclick = function() {
+                addToCartById(id);
+                closeModal();
+                location.hash = '#itinerary';
+            };
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        /* -------------------------
+           Mock Payment & Rewards
+           ------------------------- */
+        function mockPay() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('No activities selected');
+                return;
+            }
+            const total = cart.reduce((s, it) => s + it.price, 0);
+            // simulate network/payment step...
+            // demo reward: 10% back as credits + random bonus 0-50
+            const base = Math.round(total * 0.10);
+            const bonus = Math.floor(Math.random() * 50);
+            const earned = base + bonus;
+            const wallet = getWallet();
+            wallet.credits = (wallet.credits || 0) + earned;
+            saveWallet(wallet);
+            // clear cart (simulate booking consumed)
+            saveCart([]);
+            showRewards(earned, base, bonus);
+        }
+
+        function showRewards(earned, base, bonus) {
+            document.getElementById('rewards-text').textContent = `You earned ${earned} credits (${base} base + ${bonus} bonus).`;
+            const popup = document.getElementById('rewards-popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.opacity = 1;
+            }, 30);
+        }
+
+        function closeRewards() {
+            const popup = document.getElementById('rewards-popup');
+            popup.style.display = 'none';
+        }
+
+        /* -------------------------
+           Demo helpers
+           ------------------------- */
+        function applyDemoCredits(amount) {
+            const w = getWallet();
+            w.credits = (w.credits || 0) + amount;
+            saveWallet(w);
+            alert('Added ' + amount + ' demo credits to wallet');
+        }
+
+        /* -------------------------
+           Filters & search
+           ------------------------- */
+        document.getElementById('search').addEventListener('input', (e) => renderActivities(e.target.value, document.getElementById('filter-category').value));
+        document.getElementById('filter-category').addEventListener('change', (e) => renderActivities(document.getElementById('search').value, e.target.value));
+
+        function resetFilters() {
+            document.getElementById('search').value = '';
+            document.getElementById('filter-category').value = '';
+            renderActivities();
+        }
+
+        /* -------------------------
+           Hash routing simple: show sections
+           ------------------------- */
+        function showSectionFromHash() {
+            const h = location.hash.replace('#', '') || 'home';
+            // scroll into view
+            const el = document.getElementById(h);
+            if (el) el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        /* -------------------------
+           Init
+           ------------------------- */
+        function initDemo() {
+            renderActivities();
+            updateCartUI();
+            updateWalletUI();
+            showSectionFromHash();
+            window.addEventListener('hashchange', showSectionFromHash);
+        }
+        initDemo();
+    </script>
+</body>
+
+</html>
