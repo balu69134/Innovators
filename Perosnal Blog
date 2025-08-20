@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="para.css" />
+  </head>
+
+  <body id="top">
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="logo" href="#top" aria-label="Homepage"
+          >Daram Balathippa Reddy</a
+        >
+        <nav class="site-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- About Section -->
+      <section id="about" class="section">
+        <div class="container">
+          <div class="about-grid">
+            <div>
+              <h1 id="about-title">Hi, I'm Daram Balathippa Reddy</h1>
+              <p class="lead">
+                I'm an aspiring web developer focused on creating clean,
+                accessible, and responsive interfaces. I enjoy turning ideas
+                into user-friendly experiences using semantic HTML and modern
+                CSS.
+              </p>
+              <div class="cta-group">
+                <a class="btn primary" href="#projects">View Projects</a>
+                <a class="btn" href="#contact">Contact Me</a>
+              </div>
+            </div>
+            <div class="about-visual" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section
+        id="skills"
+        class="section section-alt"
+        aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title">Skills</h2>
+          <p class="section-intro">Tools and technologies I work with:</p>
+          <ul class="skills-grid">
+            <li>HTML5 & Semantic Markup</li>
+            <li>CSS3, Flexbox & Grid</li>
+            <li>Responsive Design</li>
+            <li>Accessibility (a11y)</li>
+            <li>Version Control (Git)</li>
+            <li>Basic SEO</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section">
+        <div class="container">
+          <h2 id="projects-title">Projects</h2>
+          <p class="section-intro">
+            A few projects that showcase my approach to structure and style.
+          </p>
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="project-media">
+                <img src="" alt="Placeholder screenshot for Project One" />
+              </div>
+              <div class="project-content">
+                <h3>Project One</h3>
+                <p>
+                  A responsive landing page demonstrating semantic HTML5 and
+                  modern CSS layout using Flexbox.
+                </p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-media">
+                <img src="" alt="Placeholder screenshot for Project Two" />
+              </div>
+              <div class="project-content">
+                <h3>Project Two</h3>
+                <p>
+                  A portfolio gallery arranged with CSS Grid, emphasizing
+                  spacing, typography, and hover states.
+                </p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-media">
+                <img src="" alt="Placeholder screenshot for Project Three" />
+              </div>
+              <div class="project-content">
+                <h3>Project Three</h3>
+                <p>
+                  A multi-section single page implementing consistent color
+                  themes, components, and responsive breakpoints.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section section-alt">
+        <div class="container">
+          <h2 id="contact-title">Contact</h2>
+          <p class="section-intro">
+            Have a question or want to work together? Send a message.
+          </p>
+          <form class="contact-form" action="#" method="post">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your full name"
+                  required />
+              </div>
+
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Write your message here"
+                required></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>2025 Your Name. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+/*
+    Personal Portfolio Stylesheet
+    - Semantic, responsive, and accessible styling
+    - Uses CSS variables, Flexbox, and Grid
+*/
+
+/* Removed :root variables; using explicit values */
+
+/* Global resets and base typography */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #e6ecff;
+  background: linear-gradient(180deg, #0b1220, #71856b 60%, #111a2e);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 11, 11, 0.8);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  color: #e6ecff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+.site-nav .nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.site-nav a {
+  color: #b7c3e0;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: #e6ecff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Sections */
+
+.section {
+  padding: 72px 0;
+}
+
+.section-alt {
+  background: radial-gradient(
+      1000px 600px at 0% 0%,
+      rgba(106, 163, 255, 0.06),
+      transparent 50%
+    ),
+    radial-gradient(
+      1000px 600px at 100% 100%,
+      rgba(59, 130, 246, 0.06),
+      transparent 50%
+    );
+}
+
+.section h1,
+.section h2 {
+  margin: 0 0 12px 0;
+}
+
+.section .section-intro {
+  margin: 0 0 28px 0;
+  color: #b7c3e0;
+}
+
+/* About */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.about-visual {
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(106, 163, 255, 0.15),
+    rgba(59, 130, 246, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 240px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: #b7c3e0;
+}
+
+.cta-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e6ecff;
+  text-decoration: none;
+  background: transparent;
+  transition: transform 120ms ease, background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, #6aa3ff, #3b82f6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn.primary:hover,
+.btn.primary:focus-visible {
+  filter: brightness(1.05);
+}
+
+/* Skills */
+
+.skills-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.skills-grid li {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+/* Projects */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.project-media img {
+  width: 100%;
+  height: auto;
+}
+
+.project-content {
+  padding: 16px;
+}
+
+/* Contact */
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e6ecff;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #6aa3ff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Footer */
+
+.site-footer {
+  text-align: center;
+  padding: 36px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #b7c3e0;
+}
+
+/* Responsive adjustments */
+
+@media (min-width: 700px) {
+  .about-grid {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: center;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
